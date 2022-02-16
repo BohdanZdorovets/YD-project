@@ -1,0 +1,27 @@
+{
+  "name": "yd-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Logger.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BohdanZdorovets/YD-project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BohdanZdorovets/YD-project/issues"
+  },
+  "homepage": "https://github.com/BohdanZdorovets/YD-project#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "electron": "^11.4.0",
+    "express": "^4.17.1",
+    "mongoose": "^6.0.13",
+    "node-fetch": "^3.2.0",
+    "xhr2": "^0.2.1"
+  }
+}
