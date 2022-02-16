@@ -1,4 +1,4 @@
-const UserDTO = require("../../DTO/UserDTO");
+const UserDTO = require("../../DTOs/UserDTO");
 const userService = require("../Service/authService");
 
 
@@ -20,8 +20,8 @@ class AuthController{
 
     async deleteUser(req, res, next){
         try{
-            const {login, password, access} = req.body;
-            const payload = new UserDTO(login,password,access);
+            const {login, password} = req.body;
+            const payload = new UserDTO(login,password,null);
 
             const result = await userService.deleteUser(payload);
             
