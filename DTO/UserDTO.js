@@ -10,7 +10,7 @@ class UserDTO{
     }
 
     static copy(obj){
-        return new UserDTO(obj.login,obj.password,obj.nickname,obj.access);
+        return new UserDTO(obj.login,obj.password,obj.access);
     }
 
 }

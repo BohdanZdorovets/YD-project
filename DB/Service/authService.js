@@ -1,17 +1,22 @@
 const Logger = require("../../Logger");
+const userModel = require("../Models/userModel")
 
 class AuthService{
     async findMaxId(){
-        const candidates = await chatModel.find({});
-        let Id = candidates[0].id;
+        const candidates = await userModel.find({});
+        let Id = 0;
+        
+        try{
+            Id = candidates[0].id;
+        }catch(e){
+            Id = -1;
+        }
+       
     
         for(let i=1;i<candidates.length;i++){
             if(Id < candidates[i].id)
             Id = candidates[i].id;
         }
-
-        if(!Id)
-            return 0;
 
         return Id;
     } 
@@ -25,7 +30,7 @@ class AuthService{
         }
 
         const user = await userModel.create(
-            {login: userDTO.login,password: userDTO.password, access : userDTO.access,id : id+1});
+            {login: userDTO.login,password: userDTO.password, access : userDTO.access,id : id});
 
         return {
             user: {login: userDTO.login,password: userDTO.password,nickname: userDTO.nickname,access : userDTO.access}
@@ -45,7 +50,7 @@ class AuthService{
             {login : userDTO.login,password : userDTO.password,access : userDTO.access});
         
         return {
-            user: {login: userDTO.login,password: userDTO.password,nickname: userDTO.nickname,admin : false}
+            user: {login: userDTO.login,password: userDTO.password,nickname: userDTO.nickname,access : userDTO.access}
         };
     }
 
