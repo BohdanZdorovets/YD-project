@@ -9,8 +9,8 @@ class UserDTO{
         this.access = access
     }
 
-    static copy(obj){
-        return new UserDTO(obj.login,obj.password,obj.access);
+    static copy(obj) {
+        return new UserDTO(obj.login, obj.password, obj.access);
     }
 
 }

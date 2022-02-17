@@ -17,15 +17,15 @@ app.use(errorMiddleware);
 const start = async () =>{
     try{
         await mongoose.connect(URL, {
-            useNewUrlParser : true,
-            useUnifiedTopology : true
+            useNewUrlParser: true,
+            useUnifiedTopology: true
         });
 
         app.listen(PORT, ()=> {
             Logger.serverStart(PORT);
         });
 
-    }catch(error){
+    } catch(error) {
         Logger.error(error);
     }
 }

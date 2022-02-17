@@ -21,7 +21,7 @@ class AuthController{
     async deleteUser(req, res, next){
         try{
             const {login, password} = req.body;
-            const payload = new UserDTO(login,password,null);
+            const payload = new UserDTO(login, password, null);
 
             const result = await userService.deleteUser(payload);
             
@@ -36,7 +36,7 @@ class AuthController{
     async findUser(req, res, next){
         try{
             const {login} = req.body;
-            const payload = new UserDTO(login,null,null);
+            const payload = new UserDTO(login, null, null);
 
             const result = await userService.findUser(payload);
             
