@@ -2,12 +2,12 @@ const UserDTO = require("../../DTOs/UserDTO");
 const userService = require("../Service/authService");
 
 
+
 class AuthController{
     async addUser(req, res, next){
         try{
-
             const {login, password, access} = req.body;
-            const payload = new UserDTO(login, password,access);
+            const payload = new UserDTO(login, password, access);
 
             const result = await userService.addUser(payload);
 
@@ -46,7 +46,10 @@ class AuthController{
             next(error);
         }
     }
+    
+   
 
+    
 }
 
 module.exports = new AuthController();
