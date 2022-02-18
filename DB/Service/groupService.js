@@ -6,11 +6,11 @@ const GroupDTO = require("../../DTOs/GroupDTO");
 class GroupService{
 
     async generateID() {
-        let id = Math.random() * 1000;
+        let id = (Math.random() * 1000).toFixed(0);
         let candidate = await groupModel.findOne({id: id});
         
         while (candidate) {
-            id = Math.random() * 1000;
+            id = (Math.random() * 1000).toFixed(0);
             candidate = await groupModel.findOne({id: id});
         }
 
