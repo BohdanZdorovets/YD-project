@@ -27,15 +27,12 @@ class AuthService{
 
     async generateID() {
         let id = Math.random() * 1000;
-        let candidates = await userModel.find({});
-
-        try {
-            id = candidates[0].id;
-        } catch (e) {}
-
-        candidates.forEach((user) => {
-            if (user.id == id) id = Math.random() * 1000;
-        })
+        let candidate = await userModel.findOne({id: id});
+        
+        while (candidate) {
+            id = Math.random() * 1000;
+            candidate = await userModel.findOne({id: id});
+        }
 
         return id;
     }
