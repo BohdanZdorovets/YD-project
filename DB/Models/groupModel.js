@@ -6,7 +6,7 @@ const GroupSchema = new Schema({
     teachers: {type: Array},
     students: {type: Array},
     tasks: {type: Array},
-    id: {type: Number, require:true, unique: true}
+    id: {type: Number, require: true, unique: true}
 })
 
 module.exports = model('Group', GroupSchema)

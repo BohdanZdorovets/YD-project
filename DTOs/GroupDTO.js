@@ -19,3 +19,5 @@ class GroupDTO {
         return new GroupDTO(groupDTO.name, groupDTO.description, groupDTO.teachers, groupDTO.students, groupDTO.tasks, groupDTO.id);
     }
 }
+
+module.exports = GroupDTO;

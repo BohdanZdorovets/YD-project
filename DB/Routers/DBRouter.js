@@ -7,8 +7,11 @@ router.post("/addUser", controller.addUser);
 router.post("/deleteUser", controller.deleteUser);
 router.get("/findUser", controller.findUser);
 
-router.post("/addGroup", controller.addGroup);
-router.post("/deleteGroup", controller.deleteGroup);
-router.get("/findGroup", controller.findGroup);
+const gController = require("../Controllers/groupController");
+
+router.post("/addGroup", gController.addGroup);
+router.delete("/deleteGroup", gController.deleteGroup);
+router.get("/findGroup", gController.findGroup);
+router.patch("/updateGroup", gController.updateGroup);
 
 module.exports = router;
