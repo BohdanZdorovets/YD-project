@@ -40,7 +40,7 @@ class TaskService{
     async addTask(TaskDTO, func){
       var data = {"id" : TaskDTO.id , "due_to" : TaskDTO.due_to, "description" : TaskDTO.description, "student_ids" : TaskDTO.student_ids}; 
 
-      sendHttpRequest('POST', `http://${HOST}:${PORT}/auth/addTask`, data) 
+      sendHttpRequest('POST', `http://${HOST}:${PORT}/task/addTask`, data) 
       .then(responseData =>{
           func(responseData) 
       })
@@ -52,7 +52,7 @@ class TaskService{
     async deleteTask(task_id, func){
         var data = {"id" : task_id}; 
   
-        sendHttpRequest('POST', `http://${HOST}:${PORT}/auth/deleteTask`, data) 
+        sendHttpRequest('POST', `http://${HOST}:${PORT}/task/deleteTask`, data) 
         .then(responseData =>{
             func(responseData) 
         })
