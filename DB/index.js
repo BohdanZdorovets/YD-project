@@ -14,7 +14,7 @@ const URL = process.env.DB_URL;
 const app = express();
 app.use(express.json());
 app.use("/auth", authRouter);
-app.use("/group", authRouter);
+app.use("/group", groupRouter);
 app.use("/task", taskRouter);
 app.use(errorMiddleware);
 

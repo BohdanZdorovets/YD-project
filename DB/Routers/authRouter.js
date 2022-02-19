@@ -3,8 +3,8 @@ const controller = require("../Controllers/authController");
 
 const router = new Router();
 
-router.post("/addUser", controller.addUser);
-router.delete("/deleteUser", controller.deleteUser);
-router.get("/findUser", controller.findUser);
+router.post("/add", controller.addUser);
+router.delete("/delete", controller.deleteUser);
+router.get("/find", controller.findUser);
 
 module.exports = router;

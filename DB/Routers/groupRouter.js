@@ -3,9 +3,9 @@ const сontroller = require("../Controllers/groupController");
 
 const router = new Router();
 
-router.post("/addGroup", сontroller.addGroup);
-router.delete("/deleteGroup", сontroller.deleteGroup);
-router.get("/findGroup", сontroller.findGroup);
-router.patch("/updateGroup", сontroller.updateGroup);
+router.post("/add", сontroller.addGroup);
+router.delete("/delete", сontroller.deleteGroup);
+router.get("/find", сontroller.findGroup);
+router.patch("/update", сontroller.updateGroup);
 
 module.exports = router;
