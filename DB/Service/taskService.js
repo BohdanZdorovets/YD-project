@@ -1,35 +1,35 @@
-const Logger = require("../../Logger");
-const taskModel = require("../Models/taskModel")
+// Get in-project files
+const res = require("express/lib/response");
+const Logger = require("../../Logger.js");
+const taskModel = require("../Models/taskModel.js");
 
-const getLargestId = async ()=>{
-    var idCandidate = 0;
-    for(let i = 0; !idCandidate ;i++){
-        idCandidate = await taskModel.findOne({"task_id" : i})
-    }
-    return idCandidate;
-}
-
+// Task Service
 class TaskService{
-    async addTask(taskDTO){
-        const id = getLargestId();
+    // Generate random ID for Task(must not be taken)
+    async generateID(){
+        let id = (Math.random() * 1000).toFixed(0);
+        let candidate = await taskModel.findOne({task_id: id});
         
-        await taskModel.create({
-            "task_id" : id,
-            "due_to" : taskDTO.due_to,
-            "description" : taskDTO.description,
-            "files" : taskDTO.files,
-            "student_files" : taskDTO.student_files})
+        while (candidate) {
+            id = (Math.random() * 1000).toFixed(0);
+            candidate = await taskModel.findOne({task_id: id});
+        }
 
-        return {task : {
-            "task_id" : id,
-            "due_to" : taskDTO.due_to,
-            "description" : taskDTO.description,
-            "files" : taskDTO.files,
-            "student_files" : taskDTO.student_files}}
+        return id;
     }
-    async getTaskById(id){
-        const candidate = await taskModel.findOne({"task_id" : id})
+
+    // Add new Task to DataBase
+    async addTask(taskDTO){
+        const newID = await this.generateID();
+
+        const newTask = {task_id: newID, due_to: taskDTO.due_to, description: taskDTO.description, files: taskDTO.files, student_files: taskDTO.student_files};
+        const result = await taskModel.create(newTask);
+
+        return {
+            user: result
+        }
     }
 }
 
+// Export 'Task Service' to project
 module.exports = new TaskService();
