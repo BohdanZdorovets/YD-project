@@ -3,7 +3,7 @@ class UserDTO{
     password;
     access;
 
-    constructor(login , password, access){
+    constructor(login, password, access){
         this.login = login
         this.password = password
         this.access = access
