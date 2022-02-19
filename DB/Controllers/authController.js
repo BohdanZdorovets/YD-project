@@ -1,8 +1,6 @@
 const UserDTO = require("../../DTOs/UserDTO");
 const userService = require("../Service/authService");
 
-
-
 class AuthController{
     async addUser(req, res, next){
         try{
