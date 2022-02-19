@@ -3,7 +3,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 
 const Logger = require("../Logger")
-const authRouter = require("./Routers/DBRouter")
+const authRouter = require("./Routers/authRouter")
+const groupRouter = require("./Routers/groupRouter")
 const taskRouter = require("./Routers/taskRouter")
 const errorMiddleware = require("./Middlewares/errorMiddleware")
 
@@ -12,7 +13,8 @@ const URL = process.env.DB_URL1
 
 const app = express();
 app.use(express.json());
-app.use("/auth",authRouter);
+app.use("/auth", authRouter);
+app.use("/group", authRouter);
 app.use("/task", taskRouter);
 app.use(errorMiddleware);
 
