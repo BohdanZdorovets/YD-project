@@ -8,8 +8,8 @@ const groupRouter = require("./Routers/groupRouter")
 const taskRouter = require("./Routers/taskRouter")
 const errorMiddleware = require("./Middlewares/errorMiddleware")
 
-const PORT = process.env.DB_PORT
-const URL = process.env.DB_URL1
+const PORT = process.env.DB_PORT;
+const URL = process.env.DB_URL;
 
 const app = express();
 app.use(express.json());
