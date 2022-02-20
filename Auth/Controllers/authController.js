@@ -10,7 +10,6 @@ class AuthController{
             const {login, password, access} = req.body
             const payload = new UserDTO(login,password,access);
 
-            let result = null;
 
            userService.login(payload).then(data =>{
                 return res.json({data}); 

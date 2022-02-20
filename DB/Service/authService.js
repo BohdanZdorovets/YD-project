@@ -72,7 +72,7 @@ class AuthService{
     }
 
     async findUser(userDTO){
-        const candidate = await userModel.findOne({login: userDTO.login});
+        const candidate = await userModel.findOne({login: userDTO.login,password : userDTO.password});
 
         if(!candidate)
             throw new Error("|DB ERROR| THERE IS NO SUCH USER")

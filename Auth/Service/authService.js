@@ -29,7 +29,7 @@ class AuthService{
         var data = {"login": userDTO.login, "password": userDTO.password};
         var result = null; 
       
-        sendHttpRequest("POST", "http://localhost:3000/auth/find", data).then(responseData =>{
+        sendHttpRequest("GET", "http://localhost:3000/auth/find", data).then(responseData =>{
           result = {responseData};
 
           const token = tokenService.generateToken({login: userDTO.login});

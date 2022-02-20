@@ -33,8 +33,8 @@ class AuthController{
 
     async findUser(req, res, next){
         try{
-            const {login} = req.body;
-            const payload = new UserDTO(login, null, null);
+            const {login,password} = req.body;
+            const payload = new UserDTO(login, password, null);
 
             const result = await userService.findUser(payload);
             

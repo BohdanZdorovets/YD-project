@@ -3,8 +3,8 @@ const controller = require('../Controlers/authController')
 const authMiddleWare = require("../Middlewares/authMiddleware")
 
 const router = new Router()
-router.post('/registration',authMiddleWare,controller.registration)
-router.post('/login',authMiddleWare,controller.login)
+router.post('/registration',controller.registration)
+router.post('/login',controller.login)
 router.delete('/delete',authMiddleWare,controller.login)
 
 
