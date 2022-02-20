@@ -5,6 +5,6 @@ const router = new Router();
 
 router.post("/add", controller.addUser);
 router.delete("/delete", controller.deleteUser);
-router.get("/find", controller.findUser);
+router.post("/find", controller.findUser);
 
 module.exports = router;

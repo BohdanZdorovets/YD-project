@@ -1,5 +1,7 @@
 const UserDTO = require("../../DTOs/UserDTO");
 const tokenService = require('../Service/tokenService');
+const Logger = require('../../Logger')
+var XMLHttpRequest = require("xhr2");
 
 const sendHttpRequest = (method,url,data) =>{
     const promise = new Promise((resolve,reject) =>{
@@ -27,22 +29,30 @@ const sendHttpRequest = (method,url,data) =>{
 class AuthService{
     async login(userDTO){
         var data = {"login": userDTO.login, "password": userDTO.password};
-        var result = null; 
+
+
+        var result; 
       
-        sendHttpRequest("GET", "http://localhost:3000/auth/find", data).then(responseData =>{
-          result = {responseData};
+        await sendHttpRequest("POST", "http://localhost:3000/auth/find", data).then(responseData =>{
+
+          if(responseData.message)
+                throw new Error("THERE IS NO SUCH USER")
 
           const token = tokenService.generateToken({login: userDTO.login});
+
           
-          return {
-              result : result,
+          result =  {
+              result : responseData,
               token : token
             };
         })
         .catch(error => {
           Logger.error(error);
-          return;
+          result = {message : "Error"};
         })
+        
+        return result;
+
     }
     
 

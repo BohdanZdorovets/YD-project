@@ -1,5 +1,5 @@
 const userService = require('../Service/authService')
-const UserDTO = require('../DTO/userDTO')
+const UserDTO = require('../../DTOs/UserDTO')
 
 
 
@@ -7,11 +7,12 @@ class AuthController{
     
     async login(req,res,next){
         try{
-            const {login, password, access} = req.body
-            const payload = new UserDTO(login,password,access);
+            const {login, password} = req.body
+            const payload = new UserDTO(login,password,null);
 
 
            userService.login(payload).then(data =>{
+                console.log(data)
                 return res.json({data}); 
            })
 

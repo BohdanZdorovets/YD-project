@@ -34,6 +34,9 @@ class AuthController{
     async findUser(req, res, next){
         try{
             const {login,password} = req.body;
+
+            console.log(login);
+
             const payload = new UserDTO(login, password, null);
 
             const result = await userService.findUser(payload);
