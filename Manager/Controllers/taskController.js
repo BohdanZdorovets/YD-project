@@ -6,13 +6,13 @@ class TaskController{
 
     async addTask(req, res, next){
         try {
-            const {id, due_to, description, student_ids} = req.body;
+            const {due_to, description} = req.body;
 
-            const payload = new TaskDTO(id, due_to, description, student_ids)
+            const payload = new TaskDTO(0, due_to, description, [], [])
 
-            taskService.addTask(payload, (result) =>{
-                return res.json({result});
-            });
+            taskService.addTask(payload).then(data =>{               
+                return res.json({data}); 
+           });
 
         } catch (e) {
             next(e);
