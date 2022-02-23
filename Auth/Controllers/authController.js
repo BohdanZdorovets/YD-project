@@ -12,7 +12,6 @@ class AuthController{
 
 
            userService.login(payload).then(data =>{
-                console.log(data)
                 return res.json({data}); 
            })
 
@@ -24,7 +23,13 @@ class AuthController{
 
     async registration(req,res,next){
         try{
-            const {login, password, nickname} = req.body
+            const {login, password, access} = req.body
+            const payload = new UserDTO(login,password,access);
+
+            userService.registration(payload).then(data =>{
+                console.log(data)
+                return res.json({data}); 
+           })
             
 
         }catch(e){
@@ -34,7 +39,14 @@ class AuthController{
 
     async delete(req,res,next){
         try{
-            const {login, password, nickname} = req.body
+            const {login, password} = req.body
+
+            const payload = new UserDTO(login,password,access);
+
+            userService.delete(payload).then(data =>{
+                console.log(data)
+                return res.json({data}); 
+           })
             
 
         }catch(e){

@@ -28,7 +28,7 @@ const sendHttpRequest = (method,url,data) =>{
 
 class AuthService{
     async login(userDTO){
-        var data = {"login": userDTO.login, "password": userDTO.password};
+        var data = {login: userDTO.login, password: userDTO.password};
 
 
         var result; 
@@ -57,12 +57,56 @@ class AuthService{
     
 
     async registration(userDTO){
+        var data = {login: userDTO.login, password: userDTO.password,access : userDTO.access};
 
+        var result; 
+      
+        await sendHttpRequest("POST", "http://localhost:3000/auth/add", data).then(responseData =>{
+
+          if(responseData.message)
+                throw new Error("THERE IS NO SUCH USER")
+
+          const token = tokenService.generateToken({login: userDTO.login});
+
+          
+          result =  {
+              result : responseData,
+              token : token
+            };
+        })
+        .catch(error => {
+          Logger.error(error);
+          result = {message : "Error"};
+        })
+        
+        return result;
         
     }
 
     async delete(userDTO){
+        var data = {login: userDTO.login, password: userDTO.password};
 
+        var result; 
+      
+        await sendHttpRequest("POST", "http://localhost:3000/auth/delete", data).then(responseData =>{
+
+          if(responseData.message)
+                throw new Error("THERE IS NO SUCH USER")
+
+          const token = tokenService.generateToken({login: userDTO.login});
+
+          
+          result =  {
+              result : responseData,
+              token : token
+            };
+        })
+        .catch(error => {
+          Logger.error(error);
+          result = {message : "Error"};
+        })
+        
+        return result;
         
     }
 
