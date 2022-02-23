@@ -27,7 +27,6 @@ class AuthController{
             const payload = new UserDTO(login,password,access);
 
             userService.registration(payload).then(data =>{
-                console.log(data)
                 return res.json({data}); 
            })
             
@@ -41,10 +40,9 @@ class AuthController{
         try{
             const {login, password} = req.body
 
-            const payload = new UserDTO(login,password,access);
+            const payload = new UserDTO(login,password,null);
 
             userService.delete(payload).then(data =>{
-                console.log(data)
                 return res.json({data}); 
            })
             

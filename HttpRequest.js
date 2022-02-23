@@ -1,6 +1,6 @@
 var XMLHttpRequest = require("xhr2");
 class HttpRequest{
-    sendHttpRequest = (method,url,data) =>{
+    sendHttpRequest(method,url,data){
         const promise = new Promise((resolve,reject) =>{
             const xhr = new XMLHttpRequest();
             xhr.open(method,url);

@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 
 const Logger = require("../Logger")
 const authRouter = require("./Routers/authRouter")
-const errorMiddleware = require("../Auth/Middleware/authMiddleware")
+const errorMiddleware = require("./Middleware/errorMiddleware")
 
 const PORT = process.env.AUTH_PORT;
 const URL = process.env.DB_URL;
