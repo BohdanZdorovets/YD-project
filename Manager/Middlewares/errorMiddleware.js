@@ -1,4 +1,3 @@
-const { Console } = require("console")
 const Logger = require("../../Logger")
 
 module.exports = (err,req,res,next) => {
